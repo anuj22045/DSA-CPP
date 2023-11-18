@@ -2,42 +2,50 @@
 #define SIZE 5
 using namespace std;
 
-int Q_arr[SIZE],f=0,r=-1;
-void enqueue(int v)
-{
-if(SIZE-1==r)
-{
-cout<<"OverFlow";
-}
-else
-{
-r++;
-Q_arr[r]=v;
+int Q_arr[SIZE], f = 0, r = -1;
 
+void enqueue(int v) {
+    if (SIZE - 1 == r) {
+        cout << "Overflow" << endl;
+    }
+    else {
+        r++;
+        Q_arr[r] = v;
+    }
 }
+
+void dequeue() {
+    if (r == -1) {
+        cout << "Underflow" << endl;
+    }
+    else {
+        cout << "\n\t Element " << Q_arr[f] << "\t is deleted" << endl;
+        f++;
+    }
 }
-void dequee()
-{
-if(r==-1)
-{
-cout<<"UnderFlow";
+
+void traverse() {
+    for (int i = f; i <= r; i++) {
+        cout << Q_arr[i] << "\t";
+    }
 }
-else
-{
-cout<<"\n \t Element"<<Q_arr[f]<<"\t is deleted"<<endl;
-f++;
-}
-}
-void traverse()
-{
-for(int i=f;i<=r;i++)
-{
-cout<<Q_arr[i]<<"\t";
-}
-}
-int main()
-{
-dequee();
-traverse();
-return 0;
+
+int main() {
+    int value;
+
+    for (int i = 0; i < SIZE; i++) {
+        cout << "Enter a value to enqueue into the queue: ";
+        cin >> value;
+        enqueue(value);
+    }
+
+    cout << "Queue elements: ";
+    traverse();
+
+    dequeue();
+    cout << "After dequeue operation" << endl;
+
+    traverse();
+
+    return 0;
 }
