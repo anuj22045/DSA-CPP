@@ -53,3 +53,96 @@ Pop();
 traverse();
 return 0;
 }
+
+
+
+
+
+
+
+
+//DATA ASK FROM THE USER
+
+#include <iostream>
+#define SIZE 5
+using namespace std;
+
+int stack_ar[SIZE], tos = -1;
+
+void Push(int v)
+{
+    if (tos >= SIZE - 1)
+    {
+        cout << "\n STACK OVERFLOW";
+    }
+    else
+    {
+        tos++;
+        stack_ar[tos] = v;
+    }
+}
+
+void Pop()
+{
+    if (tos == -1)
+    {
+        cout << "STACK UNDERFLOW";
+    }
+    else
+    {
+        cout << "\n"
+             << stack_ar[tos] << "\t Element is deleted" << endl;
+        tos--;
+    }
+}
+
+void Peek()
+{
+    if (tos == -1)
+    {
+        cout << "STACK EMPTY";
+    }
+    else
+    {
+        cout << "\n"
+             << stack_ar[tos] << "\t Peek Element " << endl;
+    }
+}
+
+void traverse()
+{
+    if (tos == -1)
+    {
+        cout << "STACK EMPTY";
+    }
+    else
+    {
+        for (int i = 0; i <= tos; i++)
+        {
+            cout << stack_ar[i] << "\t";
+        }
+        cout << endl;
+    }
+}
+
+int main()
+{
+    int value;
+
+    for (int i = 0; i < SIZE; i++)
+    {
+        cout << "Enter a value to push onto the stack: ";
+        cin >> value;
+        Push(value);
+    }
+
+    cout << endl;
+    cout << "Stack elements: ";
+    traverse();
+    Peek();
+    Pop();
+    traverse();
+
+    return 0;
+}
+
