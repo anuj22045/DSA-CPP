@@ -1,0 +1,41 @@
+#include<iostream>
+using namespace std;
+
+int main() {
+    int a[20], b[20], mergedArr[40];
+    int sizeA, sizeB, mergedSize;
+
+    cout << "Enter size for the first array:" << endl;
+    cin >> sizeA;
+    cout << "Enter elements for the first array:" << endl;
+    for (int i = 0; i < sizeA; i++) {
+        cin >> a[i];
+    }
+
+    cout << "Enter size for the second array:" << endl;
+    cin >> sizeB;
+    cout << "Enter elements for the second array:" << endl;
+    for (int i = 0; i < sizeB; i++) {
+        cin >> b[i];
+    }
+
+    int i = 0, j = 0, k = 0;
+
+    while (i < sizeA && j < sizeB)
+        mergedArr[k++] = (a[i] < b[j]) ? a[i++] : b[j++];
+
+    while (i < sizeA)
+        mergedArr[k++] = a[i++];
+
+    while (j < sizeB)
+        mergedArr[k++] = b[j++];
+
+    mergedSize = sizeA + sizeB;
+
+    cout << "Merged array:" << endl;
+    for (int i = 0; i < mergedSize; i++) {
+        cout << mergedArr[i] << " ";
+    }
+
+    return 0;
+}
